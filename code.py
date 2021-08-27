@@ -1,6 +1,5 @@
 """
 NeoPixel example for Pico. Displays a rainbow on the NeoPixels.
-
 REQUIRED HARDWARE:
 * RGB NeoPixel LEDs connected to pin GP0.
 """
@@ -17,17 +16,13 @@ pixels_0 = neopixel.NeoPixel(board.GP0, num_pixels, auto_write=False)
 pixels_1 = neopixel.NeoPixel(board.GP1, num_pixels, auto_write=False)
 pixels_2 = neopixel.NeoPixel(board.GP2, num_pixels, auto_write=False)
 
-pixels_0.brightness = 0.5
-pixels_1.brightness = 0.5
-pixels_2.brightness = 0.5
-
 button1 = digitalio.DigitalInOut(board.GP6)
 button1.switch_to_input(pull=digitalio.Pull.UP)
 
 button2 = digitalio.DigitalInOut(board.GP7)
 button2.switch_to_input(pull=digitalio.Pull.UP)
 
-state = 7
+state = 0
 
 
 def button_func(button1_value, button2_value, frozen=False):
@@ -70,7 +65,7 @@ while True:
             pixels_0.show()
             pixels_1.show()
             pixels_2.show()
-            time.sleep(0.0001)
+            time.sleep(0.1)
             if button_func(button1.value, button2.value):
                 break
 
